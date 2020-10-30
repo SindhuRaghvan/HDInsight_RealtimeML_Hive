@@ -53,7 +53,7 @@ The architecture we're deploying today is
 > [!CAUTION]
 > Known Issue: Creating resources in West US, East Asia can fail while deploying SQL Database
     
-[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FSindhuRaghvan%2FHDInsight-Insurance-RealtimeML%2Fmaster%2FARM-Template%2Fmodular-template.json)  
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FSindhuRaghvan%2FHDInsight_RealtimeML_Hive%2Fmaster%2FARM-Template%2Fmodular-template.json)  
 
 This template will deploy all the resources seen in the architecture above 
 
