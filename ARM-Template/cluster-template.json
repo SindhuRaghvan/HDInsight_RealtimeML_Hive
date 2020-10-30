@@ -100,7 +100,7 @@
               {
                 "name":"[concat(parameters('ADLSGen2StorageName'), '.dfs.core.windows.net')]",
                 "isDefault": true,
-                "fileSystem": "[concat(parameters('sparkClusterName'), '30-10-202001143')]",
+                "fileSystem": "[concat(parameters('sparkClusterName'), parameters('utcValue'))]",
                 "resourceID": "[concat(resourceGroup().id, '/providers/Microsoft.Storage/storageAccounts/', parameters('ADLSGen2StorageName'))]",
                 "msiResourceId": "[concat(resourceGroup().id, '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('managedIdentityName'))]"
               }
