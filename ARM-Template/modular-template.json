@@ -69,7 +69,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/SindhuRaghvan/HDInsight-Insurance-RealtimeML/master/ARM-Template/storage-template.json"
+                    "uri": "https://raw.githubusercontent.com/SindhuRaghvan/HDInsight_RealtimeML_Hive/master/ARM-Template/storage-template.json"
                 },
                 "parameters": {
                     "ADLSGen2StorageName": { "value": "[variables('ADLSGen2StorageName')]" },
@@ -91,7 +91,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/SindhuRaghvan/HDInsight-Insurance-RealtimeML/master/ARM-Template/cluster-template.json"
+                    "uri": "https://github.com/SindhuRaghvan/HDInsight_RealtimeML_Hive/blob/master/ARM-Template/cluster-template.json"
                 },
                 "parameters": {
                     "sparkClusterName": { "value": "[parameters('sparkClusterName')]" },
@@ -117,7 +117,7 @@
             "properties": {
                 "mode": "Incremental",
                 "templateLink": {
-                    "uri": "https://raw.githubusercontent.com/SindhuRaghvan/HDITemplateforInsurance/master/adftemplate.json"
+                    "uri": "https://github.com/SindhuRaghvan/HDInsight_RealtimeML_Hive/blob/master/ARM-Template/adftemplate.json"
                 },
                 "parameters": {
                     "sparkClusterName": { "value": "[parameters('sparkClusterName')]" },
