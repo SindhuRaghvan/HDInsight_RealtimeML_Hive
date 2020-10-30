@@ -1,0 +1,206 @@
+{
+  "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+  "contentVersion": "1.0.0.0",
+  "parameters": {
+    "sqlAdminLogin": {
+      "type": "string",
+      "defaultValue": "sqluser"
+    },
+    "sqlAdminPassword": {
+      "type": "securestring",
+      "defaultValue": "Micr0pwd!@"
+    },
+    "managedIdentityName": {
+      "type": "string"
+    },
+    "ADLSGen2StorageName": {
+      "type": "string"
+    },
+    "blobStorageName": {
+      "type": "string"
+    }
+  },
+  "variables": {
+    
+    "sqlDatabase": {
+      "serverName": "[concat('sqlfor',uniqueString(resourceGroup().name))]",
+      "databaseName": "Predictions"
+    },
+    "storageBlobOwner": "[concat('/subscriptions/', subscription().subscriptionId, '/providers/Microsoft.Authorization/roleDefinitions/', 'b7e6dc6d-f1e8-4753-8033-0f276bb0955b')]",
+    "roleAssignmentName": "[concat(parameters('ADLSGen2StorageName'), '/Microsoft.Authorization/',guid(resourceGroup().id))]"
+  },
+  "resources": [
+    {
+      "name": "[parameters('managedIdentityName')]",
+      "type": "Microsoft.ManagedIdentity/userAssignedIdentities",
+      "apiVersion": "2018-11-30",
+      "tags": {},
+      "location": "[resourceGroup().location]"
+    },
+    {
+      "name": "[parameters('ADLSGen2StorageName')]",
+      "type": "Microsoft.Storage/storageAccounts",
+      "dependsOn": [
+        "[resourceId('Microsoft.ManagedIdentity/userAssignedIdentities',parameters('managedIdentityName'))]"
+      ],
+      "apiVersion": "2019-06-01",
+      "tags": {
+        "displayName": "[parameters('ADLSGen2StorageName')]"
+      },
+      "location": "[resourceGroup().location]",
+      "kind": "StorageV2",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "properties": {
+        "isHnsEnabled": true,
+        "accessTier": "Hot",
+        "networkAcls": {
+          "defaultAction": "Allow",
+          "bypass": "AzureServices"
+        }
+      },
+      "resources": [
+        {
+          "type": "Microsoft.Storage/storageAccounts/providers/roleAssignments",
+          "name": "[variables('roleAssignmentName')]",
+          "apiVersion": "2020-04-01-preview",
+          "dependsOn": [ "[resourceId('Microsoft.Storage/storageAccounts', parameters('ADLSGen2StorageName'))]" ],
+          "properties": {
+            "roleDefinitionId": "[variables('storageBlobOwner')]",
+            "principalId": "[reference(parameters('managedIdentityName'), '2018-11-30').principalId]",
+            "principalType": "ServicePrincipal"
+          }
+
+        }
+      ]
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2019-06-01",
+      "name": "[concat(parameters('ADLSGen2StorageName'), '/default/data')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('ADLSGen2StorageName'))]"
+      ],
+      "properties": {
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2019-06-01",
+      "name": "[concat(parameters('ADLSGen2StorageName'), '/default/adfjobs')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('ADLSGen2StorageName'))]"
+      ],
+      "properties": {
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2019-06-01",
+      "name": "[concat(parameters('ADLSGen2StorageName'), '/default/models')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('ADLSGen2StorageName'))]"
+      ],
+      "properties": {
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2019-06-01",
+      "name": "[concat(parameters('ADLSGen2StorageName'), '/default/dependency')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('ADLSGen2StorageName'))]"
+      ],
+      "properties": {
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts/blobServices/containers",
+      "apiVersion": "2019-06-01",
+      "name": "[concat(parameters('ADLSGen2StorageName'), '/default/predictions')]",
+      "dependsOn": [
+        "[resourceId('Microsoft.Storage/storageAccounts', parameters('ADLSGen2StorageName'))]"
+      ],
+      "properties": {
+        "publicAccess": "Container"
+      }
+    },
+    {
+      "type": "Microsoft.Storage/storageAccounts",
+      "apiVersion": "2019-06-01",
+      "name": "[parameters('blobStorageName')]",
+      "sku": {
+        "name": "Standard_LRS",
+        "tier": "Standard"
+      },
+      "kind": "StorageV2",
+      "location": "[resourceGroup().location]",
+      "resources": [
+        {
+          "type": "blobServices/containers",
+          "apiVersion": "2019-06-01",
+          "name": "default/data",
+          "dependsOn": [
+            "[resourceId('Microsoft.Storage/storageAccounts',parameters('blobStorageName'))]"
+          ],
+          "properties": {
+            "publicAccess": "Container"
+          }
+        }
+      ]
+    },
+
+    {
+      "name": "[variables('sqlDatabase').serverName]",
+      "type": "Microsoft.Sql/servers",
+      "apiVersion": "2019-06-01-preview",
+      "location": "[resourceGroup().location]",
+      "tags": {
+        "displayName": "[variables('sqlDatabase').serverName]"
+      },
+      "properties": {
+        "administratorLogin": "[parameters('sqlAdminLogin')]",
+        "administratorLoginPassword": "[parameters('sqlAdminPassword')]"
+      },
+      "resources": [
+        {
+          "type": "firewallRules",
+          "apiVersion": "2015-05-01-preview",
+          "dependsOn": [
+            "[resourceId('Microsoft.Sql/servers', variables('sqlDatabase').serverName)]"
+          ],
+          "location": "[resourceGroup().location]",
+          "name": "AllowAllWindowsAzureIps",
+          "properties": {
+            "startIpAddress": "0.0.0.0",
+            "endIpAddress": "0.0.0.0"
+          }
+        },
+        {
+          "type": "databases",
+          "apiVersion": "2019-06-01-preview",
+          "name": "[variables('sqlDatabase').databaseName]",
+          "location": "[resourceGroup().location]",
+          "sku": {
+            "name": "Standard",
+            "tier": "Standard"
+          },
+          "dependsOn": [ "[resourceId('Microsoft.Sql/servers', variables('sqlDatabase').serverName)]" ],
+          "properties": {
+            "createMode": "Default"
+          }
+        }
+      ]
+    }
+
+  ],
+  "outputs": {
+    
+  }
+}

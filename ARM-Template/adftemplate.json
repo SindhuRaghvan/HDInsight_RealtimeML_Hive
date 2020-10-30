@@ -1,0 +1,329 @@
+{
+    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "contentVersion": "1.0.0.0",
+    "parameters": {
+      "SparkCluster_password": {
+        "type": "securestring"
+      },
+      "Spark_userName": {
+        "defaultValue": "admin",
+        "type": "String"
+      },
+      "AzureDataLakeStorageName": {
+          "type": "string"
+      },
+      "blobStorageName": {
+          "type": "string"
+      },
+      "sparkClusterName": {
+          "type": "string"
+      }
+    },
+    "variables": {
+      "factoryName": "[concat('adf-', uniqueString(resourceGroup().id))]",
+      "factoryId": "[concat('Microsoft.DataFactory/factories/', variables('factoryName'))]",
+      "clusterUrl": "[concat('https://', parameters('sparkClusterName'), '.azurehdinsight.net')]",
+      "adlsgen2url": "[concat('https://', parameters('AzureDataLakeStorageName'), '.dfs.core.windows.net')]"
+    },
+    "resources": [
+      {
+        "type": "Microsoft.DataFactory/factories",
+        "apiVersion": "2018-06-01",
+        "name": "[variables('factoryName')]",
+        "location": "West US",
+        "identity": {
+          "type": "SystemAssigned"
+        },
+        "properties": {}
+      },
+        {
+        "name": "[concat(variables('factoryName'), '/RawBlob')]",
+        "type": "Microsoft.DataFactory/factories/linkedServices",
+        "apiVersion": "2018-06-01",
+        "properties": {
+          "annotations": [],
+          "type": "AzureBlobStorage",
+          "typeProperties": {
+            "connectionString": "[concat('DefaultEndpointsProtocol=https;AccountName=', parameters('blobStorageName'), ';AccountKey=', listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('blobStorageName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value, ';EndpointSuffix=core.windows.net')]"
+          }
+        },
+        "dependsOn": [ "[variables('factoryName')]" ]
+      },
+      {
+        "type": "Microsoft.DataFactory/factories/linkedServices",
+        "apiVersion": "2018-06-01",
+        "name": "[concat(variables('factoryName'), '/AzureDataLakeStorage')]",
+        "dependsOn": [ "[variables('factoryName')]" ],
+        "properties": {
+          "annotations": [],
+          "type": "AzureBlobFS",
+          "typeProperties": {
+            "url": "[variables('adlsgen2url')]",
+            "accountKey": {
+              "type": "SecureString",
+              "value": "[listKeys(resourceId('Microsoft.Storage/storageAccounts', parameters('AzureDataLakeStorageName')), providers('Microsoft.Storage', 'storageAccounts').apiVersions[0]).keys[0].value]"
+            }
+          }
+        }
+      },
+      {
+        "type": "Microsoft.DataFactory/factories/linkedServices",
+        "apiVersion": "2018-06-01",
+        "name": "[concat(variables('factoryName'), '/SparkCluster')]",
+        "dependsOn": [
+          "[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage')]",
+          "[variables('factoryName')]"
+        ],
+        "properties": {
+          "annotations": [],
+          "type": "HDInsight",
+          "typeProperties": {
+            "clusterUri": "[variables('clusterUrl')]",
+            "userName": "[parameters('Spark_userName')]",
+            "password": {
+              "type": "SecureString",
+              "value": "[parameters('SparkCluster_password')]"
+            },
+            "isEspEnabled": false,
+            "fileSystem": "adflogs",
+            "linkedServiceName": {
+              "referenceName": "AzureDataLakeStorage",
+              "type": "LinkedServiceReference"
+            }
+          }
+        }
+      },
+      {
+        "name": "[concat(variables('factoryName'), '/LoadAndModel')]",
+        "type": "Microsoft.DataFactory/factories/pipelines",
+        "apiVersion": "2018-06-01",
+        "properties": {
+          "activities": [
+            {
+              "name": "CopyData",
+              "type": "Copy",
+              "dependsOn": [],
+              "policy": {
+                "timeout": "7.00:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureOutput": false,
+                "secureInput": false
+              },
+              "userProperties": [],
+           "typeProperties": {
+                            "source": {
+                                "type": "DelimitedTextSource",
+                                "storeSettings": {
+                                    "type": "AzureBlobStorageReadSettings",
+                                    "recursive": true
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextReadSettings"
+                                }
+                            },
+                            "sink": {
+                                "type": "DelimitedTextSink",
+                                "storeSettings": {
+                                    "type": "AzureBlobFSWriteSettings"
+                                },
+                                "formatSettings": {
+                                    "type": "DelimitedTextWriteSettings",
+                                    "quoteAllText": true,
+                                    "fileExtension": ".csv"
+                                }
+                            },
+                            "enableStaging": false,
+                            "translator": {
+                                "type": "TabularTranslator",
+                                "typeConversion": true,
+                                "typeConversionSettings": {
+                                    "allowDataTruncation": true,
+                                    "treatBooleanAsNumber": false
+                                }
+                            }
+                        },
+              "inputs": [
+                {
+                  "referenceName": "CopyRawData",
+                  "type": "DatasetReference",
+                  "parameters": {}
+                }
+              ],
+              "outputs": [
+                {
+                  "referenceName": "DestData",
+                  "type": "DatasetReference",
+                  "parameters": {}
+                }
+              ]
+            },
+            {
+              "name": "BuildModels",
+              "description": "Build Models on Spark Cluster",
+              "type": "HDInsightSpark",
+              "dependsOn": [
+                {
+                  "activity": "CopyData",
+                  "dependencyConditions": [
+                    "Succeeded"
+                  ]
+                }
+              ],
+              "policy": {
+                "timeout": "7.00:00:00",
+                "retry": 0,
+                "retryIntervalInSeconds": 30,
+                "secureOutput": false,
+                "secureInput": false
+              },
+              "userProperties": [],
+              "typeProperties": {
+                "rootPath": "adfjobs",
+                "entryFilePath": "Processing_clean.py",
+                "sparkJobLinkedService": {
+                  "referenceName": "AzureDataLakeStorage",
+                  "type": "LinkedServiceReference"
+                }
+              },
+              "linkedServiceName": {
+                "referenceName": "SparkCluster",
+                "type": "LinkedServiceReference"
+              }
+            }
+          ],
+          "annotations": []
+        },
+        "dependsOn": [
+          "[concat(variables('factoryId'), '/datasets/CopyRawData')]",
+          "[concat(variables('factoryId'), '/datasets/DestData')]",
+          "[concat(variables('factoryId'), '/linkedServices/SparkCluster')]",
+          "[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage')]"
+        ]
+      },
+       {
+            "name": "[concat(variables('factoryName'), '/DestData')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "AzureDataLakeStorage",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobFSLocation",
+                        "fileName": "car_insurance_claim.csv",
+                        "fileSystem": "data"
+                    },
+                    "columnDelimiter": ",",
+                    "escapeChar": "\\",
+                    "firstRowAsHeader": true,
+                    "quoteChar": "\""
+                },
+                "schema": [
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    },
+                    {
+                        "type": "String"
+                    }
+                ]
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/AzureDataLakeStorage')]"
+            ]
+        },
+         {
+            "name": "[concat(variables('factoryName'), '/CopyRawData')]",
+            "type": "Microsoft.DataFactory/factories/datasets",
+            "apiVersion": "2018-06-01",
+            "properties": {
+                "linkedServiceName": {
+                    "referenceName": "RawBlob",
+                    "type": "LinkedServiceReference"
+                },
+                "annotations": [],
+                "type": "DelimitedText",
+                "typeProperties": {
+                    "location": {
+                        "type": "AzureBlobStorageLocation",
+                        "fileName": "car_insurance_claim.csv",
+                        "container": "data"
+                    },
+                    "columnDelimiter": ",",
+                    "escapeChar": "\\",
+                    "firstRowAsHeader": true,
+                    "quoteChar": "\""
+                },
+                "schema": []
+            },
+            "dependsOn": [
+                "[concat(variables('factoryId'), '/linkedServices/RawBlob')]"
+            ]
+        }
+      
+    ],
+    "outputs": {
+      "factoryName": {
+        "value": "[variables('factoryName')]",
+        "type": "string"
+      }
+    }
+  }

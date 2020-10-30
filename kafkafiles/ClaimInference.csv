@@ -1,0 +1,100 @@
+id,KIDSDRIV,BIRTH,AGE,HOMEKIDS,YOJ,INCOME,PARENT1,HOME_VAL,MSTATUS,GENDER,EDUCATION,OCCUPATION,TRAVTIME,CAR_USE,BLUEBOOK,TIF,CAR_TYPE,RED_CAR,OLDCLAIM,CLM_FREQ,REVOKED,MVR_PTS,CLM_AMT,CAR_AGE,URBANICITY
+1,0,4-Dec-92,28,0,6,"$91,360 ",No,"$68,052 ",No,F,High School,Clerical,41,Commercial,"$36,275 ",9,Minivan,Yes,"$20,368 ",0,No,0,$0 ,9,Highly Rural/ Rural
+2,3,23-Apr-02,18,0,8,"$47,522 ",Yes,"$267,843 ",Yes,M,Bachelors,Home Maker,23,Private,"$23,784 ",3,Minivan,Yes,"$4,756 ",2,No,4,"$8,943 ",1,Highly Urban/ Urban
+3,0,13-Nov-65,55,2,7,"$89,272 ",No,"$95,769 ",Yes,F,Masters,Student,17,Commercial,"$24,047 ",15,Panel Truck,Yes,"$3,280 ",3,No,6,"$8,943 ",8,Highly Rural/ Rural
+4,2,3-Apr-91,29,0,12,"$109,851 ",Yes,"$187,521 ",Yes,M,Masters,Student,30,Commercial,"$14,984 ",7,Minivan,No,"$15,191 ",0,Yes,10,"$3,896 ",10,Highly Rural/ Rural
+5,1,21-Feb-67,53,4,13,"$30,042 ",Yes,"$120,114 ",No,M,Masters,Home Maker,43,Commercial,"$24,366 ",7,Panel Truck,No,"$3,305 ",0,No,10,"$2,351 ",7,Highly Rural/ Rural
+6,1,11-Jul-99,21,2,7,"$70,485 ",Yes,"$124,410 ",Yes,F,Bachelors,Manager,30,Private,"$38,846 ",7,Pickup,Yes,"$19,042 ",3,No,3,$0 ,2,Highly Rural/ Rural
+7,1,7-Dec-85,35,2,0,"$55,436 ",Yes,"$182,005 ",Yes,F,PhD,Student,40,Private,"$36,578 ",12,Panel Truck,No,"$3,130 ",0,No,8,$0 ,8,Highly Urban/ Urban
+8,1,13-Jun-69,51,1,3,"$54,852 ",Yes,"$141,233 ",Yes,F,Bachelors,Student,40,Commercial,"$27,679 ",11,Van,No,"$17,921 ",0,Yes,10,"$6,477 ",12,Highly Urban/ Urban
+9,0,29-Apr-88,32,3,4,"$130,607 ",No,"$181,820 ",No,M,PhD,Blue Collar,18,Private,"$29,494 ",14,Minivan,No,"$5,217 ",0,No,7,$0 ,9,Highly Rural/ Rural
+10,1,5-Jan-91,30,3,0,"$129,314 ",Yes,"$294,453 ",No,M,High School,Manager,14,Private,"$23,972 ",10,Minivan,No,"$9,729 ",0,Yes,2,"$5,347 ",9,Highly Rural/ Rural
+11,1,25-Dec-94,26,3,9,"$69,153 ",Yes,"$29,873 ",No,M,Masters,Manager,44,Private,"$21,576 ",6,Panel Truck,No,"$20,236 ",0,No,6,"$4,931 ",0,Highly Rural/ Rural
+12,3,25-Dec-68,52,0,13,"$81,858 ",No,"$261,981 ",Yes,M,High School,Lawyer,20,Commercial,"$37,768 ",2,SUV,Yes,"$1,589 ",2,No,6,"$7,651 ",9,Highly Urban/ Urban
+13,3,27-Apr-87,33,3,9,"$88,356 ",Yes,"$180,216 ",Yes,F,Masters,Manager,30,Private,"$34,851 ",6,SUV,No,"$1,635 ",2,Yes,7,"$6,477 ",7,Highly Rural/ Rural
+14,3,15-Dec-78,42,2,12,"$148,763 ",No,"$36,966 ",Yes,F,PhD,Blue Collar,25,Private,"$33,210 ",14,Minivan,Yes,"$8,155 ",2,Yes,0,"$4,931 ",3,Highly Rural/ Rural
+15,0,14-Apr-03,17,0,1,"$116,414 ",No,"$210,706 ",No,F,Masters,Student,35,Commercial,"$29,397 ",4,Sports Car,No,"$22,533 ",1,Yes,5,$0 ,4,Highly Urban/ Urban
+16,2,6-May-91,29,2,4,"$147,714 ",Yes,"$294,864 ",No,F,Bachelors,Lawyer,11,Commercial,"$36,966 ",14,Sports Car,Yes,"$11,483 ",0,No,3,"$2,351 ",15,Highly Urban/ Urban
+17,0,25-Jul-82,38,1,12,"$128,117 ",No,"$233,847 ",Yes,M,Bachelors,Professional,37,Commercial,"$37,988 ",10,Van,No,"$23,771 ",0,Yes,5,$0 ,9,Highly Urban/ Urban
+18,2,25-Jan-92,29,3,0,"$136,781 ",Yes,"$24,123 ",Yes,F,Masters,Professional,38,Private,"$16,333 ",7,SUV,No,"$7,835 ",2,No,4,"$5,861 ",5,Highly Urban/ Urban
+19,1,28-Jan-76,45,3,8,"$123,122 ",Yes,"$261,964 ",No,M,High School,Clerical,38,Commercial,"$16,371 ",15,Pickup,No,$649 ,3,No,6,"$5,861 ",4,Highly Rural/ Rural
+20,3,15-Sep-76,44,2,5,"$85,145 ",Yes,"$85,003 ",Yes,F,Masters,Manager,42,Commercial,"$15,832 ",1,Panel Truck,No,$667 ,0,Yes,3,$0 ,12,Highly Urban/ Urban
+21,0,13-May-02,18,0,1,"$149,806 ",No,"$186,580 ",Yes,M,Bachelors,Professional,41,Commercial,"$38,822 ",13,Minivan,Yes,"$23,372 ",0,Yes,8,"$6,477 ",1,Highly Urban/ Urban
+22,1,21-Oct-98,22,2,11,"$84,561 ",Yes,"$125,206 ",Yes,F,Masters,Blue Collar,20,Private,"$30,427 ",13,Pickup,Yes,"$24,981 ",0,No,6,$0 ,10,Highly Rural/ Rural
+23,3,22-Dec-02,18,0,7,"$78,205 ",No,"$96,310 ",No,M,Bachelors,Home Maker,14,Commercial,"$37,941 ",14,Sports Car,Yes,"$1,960 ",3,No,6,"$5,861 ",2,Highly Rural/ Rural
+24,1,26-Aug-93,27,0,4,"$65,422 ",Yes,"$85,244 ",Yes,M,Bachelors,Lawyer,23,Commercial,"$14,162 ",13,Panel Truck,Yes,"$15,495 ",2,No,1,"$7,651 ",12,Highly Urban/ Urban
+25,0,2-Dec-03,17,1,5,"$36,766 ",Yes,"$157,824 ",Yes,M,PhD,Blue Collar,14,Private,"$34,354 ",6,Van,Yes,"$14,595 ",0,Yes,10,"$5,861 ",9,Highly Urban/ Urban
+26,1,29-Jun-69,51,2,13,"$126,113 ",Yes,"$227,840 ",Yes,M,Bachelors,Manager,23,Private,"$19,945 ",7,SUV,No,"$21,228 ",0,Yes,5,$0 ,3,Highly Rural/ Rural
+27,2,11-Apr-81,39,0,13,"$83,464 ",Yes,"$12,322 ",Yes,M,Masters,Professional,37,Private,"$20,402 ",8,Pickup,No,"$7,134 ",2,Yes,9,"$5,347 ",15,Highly Urban/ Urban
+28,2,18-May-80,40,0,8,"$37,004 ",No,"$286,275 ",No,M,Bachelors,Student,22,Commercial,"$18,941 ",2,Minivan,Yes,"$26,603 ",0,No,4,$0 ,13,Highly Rural/ Rural
+29,0,2-Jun-91,29,0,3,"$79,591 ",Yes,"$34,632 ",No,F,PhD,Doctor,32,Private,"$23,391 ",15,Van,No,"$8,716 ",0,No,10,"$7,651 ",10,Highly Rural/ Rural
+30,3,5-Oct-71,49,0,6,"$79,504 ",No,"$22,010 ",Yes,M,Masters,Professional,37,Commercial,"$36,403 ",15,Panel Truck,Yes,"$25,437 ",1,No,8,$0 ,9,Highly Rural/ Rural
+31,3,31-Oct-76,44,1,5,"$109,066 ",Yes,"$182,603 ",Yes,M,High School,Manager,20,Commercial,"$16,804 ",1,Sports Car,No,"$13,495 ",1,No,1,$0 ,5,Highly Urban/ Urban
+32,3,8-Nov-99,21,0,12,"$93,508 ",Yes,"$110,100 ",No,M,Bachelors,Doctor,42,Commercial,"$19,717 ",1,Panel Truck,No,"$21,751 ",0,Yes,10,"$7,651 ",0,Highly Rural/ Rural
+33,1,31-Aug-74,46,2,5,"$118,592 ",Yes,"$172,891 ",Yes,M,Bachelors,Doctor,20,Commercial,"$24,756 ",14,Panel Truck,No,"$16,387 ",0,No,6,$0 ,7,Highly Rural/ Rural
+34,1,3-Aug-00,20,3,1,"$130,803 ",Yes,"$227,060 ",No,F,PhD,Lawyer,16,Commercial,"$28,121 ",2,SUV,Yes,"$19,635 ",1,No,3,$0 ,11,Highly Urban/ Urban
+35,2,10-Jul-83,37,0,9,"$128,767 ",No,"$168,900 ",Yes,M,High School,Home Maker,40,Private,"$34,936 ",4,Van,Yes,"$9,678 ",2,No,10,"$7,543 ",11,Highly Rural/ Rural
+36,0,12-Sep-95,25,3,8,"$139,841 ",Yes,"$228,114 ",Yes,M,Bachelors,Manager,19,Commercial,"$24,153 ",6,Minivan,Yes,"$21,399 ",1,Yes,10,$0 ,3,Highly Urban/ Urban
+37,2,29-Nov-80,40,2,11,"$78,437 ",Yes,"$59,242 ",Yes,M,PhD,Clerical,42,Commercial,"$22,794 ",3,Minivan,No,"$25,995 ",3,Yes,7,$0 ,7,Highly Rural/ Rural
+38,1,5-Sep-68,52,0,9,"$71,106 ",No,"$91,500 ",No,F,Bachelors,Clerical,39,Private,"$35,841 ",15,Panel Truck,No,"$14,650 ",0,Yes,3,"$8,943 ",3,Highly Rural/ Rural
+39,2,29-Nov-97,23,2,10,"$70,716 ",No,"$4,569 ",No,M,Masters,Home Maker,23,Commercial,"$29,471 ",13,Van,No,"$20,886 ",0,No,3,"$4,931 ",12,Highly Rural/ Rural
+40,2,16-Jul-80,40,3,4,"$95,363 ",Yes,"$51,574 ",Yes,M,PhD,Manager,40,Commercial,"$31,270 ",13,SUV,No,"$17,154 ",0,No,9,$0 ,0,Highly Urban/ Urban
+41,2,20-Nov-03,17,4,8,"$56,355 ",No,"$148,326 ",Yes,M,PhD,Home Maker,27,Private,"$25,248 ",12,Van,No,"$26,778 ",3,Yes,3,$0 ,4,Highly Rural/ Rural
+42,0,26-Nov-96,24,0,8,"$46,058 ",Yes,"$98,962 ",Yes,F,Masters,Home Maker,15,Private,"$34,225 ",1,Sports Car,No,"$12,500 ",0,No,2,"$6,477 ",4,Highly Rural/ Rural
+43,3,16-Mar-84,36,3,3,"$132,184 ",No,"$259,162 ",Yes,M,Bachelors,Doctor,24,Commercial,"$20,354 ",11,Sports Car,Yes,"$23,806 ",0,No,3,"$2,351 ",10,Highly Rural/ Rural
+44,0,28-Aug-89,31,3,10,"$142,073 ",Yes,"$291,791 ",No,M,Bachelors,Lawyer,14,Commercial,"$38,684 ",11,Minivan,Yes,"$5,797 ",0,No,6,"$5,347 ",9,Highly Urban/ Urban
+45,2,28-Apr-73,47,0,10,"$52,183 ",Yes,"$143,728 ",No,M,PhD,Professional,45,Commercial,"$27,683 ",10,Panel Truck,No,"$18,236 ",0,No,5,$0 ,4,Highly Urban/ Urban
+46,3,12-Apr-03,17,3,6,"$58,601 ",No,"$55,393 ",No,F,High School,Professional,19,Private,"$25,169 ",4,Van,No,"$18,564 ",3,No,2,"$4,931 ",4,Highly Urban/ Urban
+47,2,2-Nov-91,29,3,3,"$43,604 ",Yes,"$12,479 ",Yes,M,High School,Blue Collar,32,Private,"$33,495 ",4,Panel Truck,No,"$22,923 ",0,Yes,8,$0 ,4,Highly Rural/ Rural
+48,2,10-Jan-66,55,0,7,"$38,543 ",No,"$115,167 ",No,F,Masters,Clerical,44,Commercial,"$34,763 ",13,Panel Truck,No,"$22,074 ",0,No,4,$0 ,15,Highly Urban/ Urban
+49,0,29-Sep-91,29,0,13,"$85,673 ",Yes,"$72,659 ",Yes,M,High School,Manager,43,Commercial,"$17,150 ",2,Van,No,"$8,439 ",0,No,7,"$2,351 ",14,Highly Rural/ Rural
+50,1,27-May-86,34,0,6,"$138,134 ",No,"$62,404 ",No,M,Masters,Home Maker,26,Commercial,"$32,082 ",6,Van,No,"$10,160 ",2,Yes,7,"$3,896 ",13,Highly Urban/ Urban
+51,0,1-Oct-79,41,0,8,"$47,720 ",No,"$59,426 ",No,F,Bachelors,Lawyer,32,Private,"$24,085 ",2,SUV,No,"$3,074 ",0,Yes,9,"$3,896 ",14,Highly Rural/ Rural
+52,1,11-Jun-88,32,0,7,"$78,170 ",No,"$256,292 ",No,F,High School,Blue Collar,42,Private,"$33,866 ",5,SUV,No,"$25,586 ",0,No,6,$0 ,2,Highly Urban/ Urban
+53,0,21-Oct-72,48,2,1,"$50,453 ",Yes,"$67,124 ",Yes,F,Masters,Blue Collar,36,Commercial,"$31,813 ",4,Sports Car,No,"$13,844 ",1,Yes,7,$0 ,9,Highly Rural/ Rural
+54,3,18-Oct-99,21,0,2,"$40,762 ",Yes,"$97,320 ",No,F,Bachelors,Student,28,Commercial,"$24,243 ",2,Van,Yes,"$21,878 ",0,No,1,"$5,861 ",15,Highly Rural/ Rural
+55,2,14-Jan-71,50,2,0,"$130,232 ",Yes,"$218,533 ",No,F,Masters,Manager,19,Commercial,"$35,552 ",15,Panel Truck,Yes,"$4,521 ",1,Yes,5,$0 ,5,Highly Rural/ Rural
+56,1,1-Mar-96,24,3,11,"$120,084 ",No,"$78,299 ",No,M,High School,Doctor,40,Private,"$31,535 ",13,SUV,No,"$11,418 ",3,No,0,"$5,347 ",12,Highly Rural/ Rural
+57,0,27-Feb-94,26,4,3,"$114,550 ",No,"$195,396 ",Yes,F,Masters,Lawyer,42,Commercial,"$39,317 ",7,Van,Yes,$960 ,0,No,0,$0 ,14,Highly Rural/ Rural
+58,0,20-May-84,36,0,5,"$82,838 ",No,"$14,808 ",Yes,M,Masters,Student,44,Private,"$39,275 ",9,Pickup,No,"$9,749 ",0,Yes,5,"$2,351 ",2,Highly Rural/ Rural
+59,3,18-May-67,53,1,2,"$66,978 ",Yes,"$231,440 ",Yes,F,High School,Lawyer,24,Private,"$37,038 ",12,Sports Car,Yes,"$2,701 ",0,No,6,$0 ,12,Highly Rural/ Rural
+60,0,6-Jul-67,53,4,0,"$77,693 ",Yes,"$184,210 ",No,F,Bachelors,Student,14,Private,"$23,763 ",2,Sports Car,Yes,"$26,885 ",0,No,2,$0 ,7,Highly Rural/ Rural
+61,0,17-Nov-78,42,2,5,"$86,820 ",Yes,"$255,901 ",No,F,Masters,Doctor,18,Commercial,"$17,605 ",15,SUV,Yes,"$12,507 ",0,No,3,"$8,943 ",12,Highly Rural/ Rural
+62,2,21-Mar-76,44,1,6,"$43,490 ",Yes,"$19,384 ",No,M,PhD,Manager,14,Private,"$24,543 ",6,Pickup,No,"$10,678 ",0,Yes,9,$0 ,6,Highly Urban/ Urban
+63,2,6-Jul-69,51,1,6,"$90,415 ",No,"$118,573 ",No,F,High School,Doctor,44,Commercial,"$28,180 ",3,Panel Truck,Yes,"$23,815 ",3,Yes,2,$0 ,4,Highly Rural/ Rural
+64,1,30-Sep-82,38,0,5,"$117,115 ",Yes,"$62,086 ",Yes,F,Masters,Manager,21,Private,"$20,193 ",10,Panel Truck,No,"$15,833 ",1,No,6,$0 ,10,Highly Rural/ Rural
+65,0,28-Oct-03,17,0,1,"$67,007 ",Yes,"$111,338 ",No,M,High School,Manager,16,Private,"$29,222 ",7,Panel Truck,Yes,"$24,925 ",0,Yes,8,$0 ,1,Highly Rural/ Rural
+66,0,14-Feb-72,48,2,7,"$119,711 ",No,"$258,674 ",No,F,High School,Blue Collar,35,Private,"$15,375 ",8,Pickup,Yes,"$14,706 ",0,Yes,2,$0 ,2,Highly Urban/ Urban
+67,3,17-Jul-79,41,0,5,"$32,930 ",No,"$294,814 ",No,F,Bachelors,Manager,33,Commercial,"$31,828 ",9,Van,No,"$18,421 ",3,Yes,4,"$7,543 ",0,Highly Rural/ Rural
+68,3,29-Sep-00,20,0,12,"$118,510 ",No,"$217,499 ",No,M,PhD,Lawyer,22,Commercial,"$29,736 ",2,SUV,No,"$26,307 ",0,Yes,3,$0 ,4,Highly Urban/ Urban
+69,0,31-Dec-95,25,3,3,"$65,717 ",Yes,"$53,519 ",No,F,High School,Manager,41,Commercial,"$15,677 ",14,Van,No,"$21,917 ",0,No,3,$0 ,10,Highly Urban/ Urban
+70,2,8-Jan-90,31,1,13,"$95,517 ",No,"$64,120 ",Yes,M,PhD,Manager,41,Commercial,"$22,311 ",11,Sports Car,Yes,"$7,857 ",0,No,4,$0 ,13,Highly Rural/ Rural
+71,0,2-Oct-82,38,2,12,"$75,607 ",Yes,"$63,695 ",No,M,Masters,Blue Collar,27,Private,"$35,674 ",6,Sports Car,Yes,"$23,552 ",0,Yes,0,"$7,543 ",11,Highly Rural/ Rural
+72,0,1-Apr-00,20,0,2,"$64,661 ",Yes,"$192,948 ",No,F,PhD,Manager,31,Commercial,"$36,813 ",12,Van,No,"$17,991 ",0,Yes,0,$0 ,14,Highly Rural/ Rural
+73,3,29-May-92,28,3,8,"$59,806 ",No,"$153,990 ",No,F,High School,Home Maker,11,Commercial,"$21,374 ",1,Panel Truck,Yes,"$26,872 ",3,Yes,4,"$3,896 ",1,Highly Rural/ Rural
+74,1,22-Sep-85,35,1,13,"$148,535 ",Yes,"$297,569 ",Yes,F,PhD,Professional,35,Commercial,"$37,059 ",12,Pickup,Yes,"$24,524 ",1,No,1,"$3,896 ",9,Highly Urban/ Urban
+75,0,24-Sep-81,39,1,3,"$96,954 ",Yes,"$197,260 ",No,M,Bachelors,Lawyer,44,Commercial,"$20,108 ",11,SUV,No,"$26,105 ",0,No,0,"$8,943 ",9,Highly Rural/ Rural
+76,3,25-Sep-89,31,4,6,"$91,909 ",No,"$61,348 ",Yes,M,Bachelors,Blue Collar,15,Private,"$20,108 ",3,Van,Yes,"$1,616 ",0,Yes,2,$0 ,1,Highly Rural/ Rural
+77,1,6-Feb-92,29,0,13,"$66,516 ",Yes,"$58,536 ",No,M,Masters,Student,34,Private,"$34,580 ",4,SUV,No,"$1,791 ",0,No,9,"$5,347 ",5,Highly Urban/ Urban
+78,2,8-Aug-82,38,0,5,"$101,225 ",Yes,"$251,699 ",No,M,Masters,Clerical,42,Commercial,"$21,968 ",2,Minivan,No,"$22,899 ",3,Yes,5,"$3,896 ",11,Highly Urban/ Urban
+79,2,16-Apr-75,45,2,7,"$76,737 ",Yes,"$1,635 ",No,F,PhD,Blue Collar,39,Private,"$25,655 ",3,SUV,No,"$17,854 ",0,Yes,3,"$5,347 ",13,Highly Urban/ Urban
+80,1,11-May-83,37,3,13,"$112,817 ",No,"$36,165 ",No,M,PhD,Blue Collar,12,Commercial,"$20,767 ",15,Minivan,Yes,"$12,265 ",0,Yes,3,$0 ,7,Highly Rural/ Rural
+81,0,2-Sep-92,28,2,13,"$108,004 ",No,"$147,256 ",Yes,M,High School,Blue Collar,18,Private,"$27,496 ",15,Minivan,No,"$18,568 ",0,Yes,3,"$6,477 ",4,Highly Urban/ Urban
+82,1,16-Jun-99,21,4,10,"$99,283 ",No,"$175,099 ",No,M,Bachelors,Student,38,Commercial,"$23,102 ",2,Van,Yes,"$12,243 ",0,No,1,$0 ,10,Highly Urban/ Urban
+83,2,1-Nov-81,39,0,9,"$97,451 ",No,"$30,168 ",No,F,Bachelors,Professional,41,Commercial,"$35,283 ",2,Panel Truck,Yes,"$12,879 ",2,Yes,4,"$5,347 ",14,Highly Rural/ Rural
+84,2,19-Jul-89,31,4,6,"$52,508 ",No,"$81,946 ",No,F,High School,Blue Collar,45,Commercial,"$36,387 ",6,SUV,Yes,"$16,704 ",1,Yes,4,"$5,347 ",1,Highly Rural/ Rural
+85,2,28-Sep-89,31,2,2,"$121,577 ",No,"$228,272 ",Yes,F,Bachelors,Professional,24,Commercial,"$27,691 ",13,Van,No,"$20,397 ",0,No,3,"$5,861 ",11,Highly Rural/ Rural
+86,1,20-May-76,44,0,1,"$47,293 ",Yes,"$120,383 ",No,M,Bachelors,Lawyer,30,Private,"$17,802 ",10,SUV,Yes,"$23,029 ",0,No,9,$0 ,13,Highly Rural/ Rural
+87,0,18-Oct-93,27,0,8,"$142,828 ",No,"$234,562 ",Yes,M,Masters,Professional,32,Private,"$30,190 ",10,Pickup,Yes,"$24,302 ",1,Yes,4,$0 ,10,Highly Urban/ Urban
+88,2,3-Dec-97,23,2,3,"$137,135 ",Yes,"$173,923 ",No,F,PhD,Lawyer,25,Commercial,"$21,416 ",3,Minivan,No,"$3,365 ",0,Yes,9,"$6,477 ",5,Highly Urban/ Urban
+89,3,25-Nov-86,34,0,4,"$138,459 ",Yes,"$61,576 ",No,M,High School,Student,23,Private,"$30,343 ",10,Minivan,No,"$9,316 ",0,No,0,$0 ,5,Highly Urban/ Urban
+90,1,6-Jan-98,23,2,8,"$109,384 ",Yes,"$115,396 ",Yes,M,High School,Doctor,45,Commercial,"$24,262 ",7,Panel Truck,No,"$7,498 ",0,No,8,"$6,477 ",14,Highly Urban/ Urban
+91,1,8-Aug-70,50,4,1,"$136,058 ",No,"$295,668 ",No,F,Masters,Home Maker,25,Commercial,"$38,685 ",8,Panel Truck,No,"$16,982 ",0,No,7,$0 ,1,Highly Rural/ Rural
+92,1,24-Jun-84,36,3,6,"$120,259 ",No,"$229,507 ",Yes,F,Masters,Student,12,Private,"$17,810 ",2,Sports Car,No,"$11,722 ",0,Yes,5,"$7,651 ",8,Highly Rural/ Rural
+93,3,8-Nov-74,46,1,8,"$122,863 ",Yes,"$150,713 ",Yes,M,High School,Clerical,11,Commercial,"$33,447 ",8,Panel Truck,No,"$20,549 ",3,No,5,$0 ,11,Highly Rural/ Rural
+94,0,30-Apr-86,34,0,10,"$130,975 ",No,"$86,102 ",No,M,High School,Blue Collar,36,Private,"$33,444 ",12,Minivan,Yes,"$19,917 ",1,Yes,1,$0 ,6,Highly Rural/ Rural
+95,0,22-Mar-95,25,0,1,"$80,221 ",Yes,"$125,980 ",No,F,Masters,Lawyer,31,Private,"$24,362 ",9,Panel Truck,Yes,"$3,809 ",3,No,3,$0 ,14,Highly Rural/ Rural
+96,0,6-Jun-98,22,2,4,"$102,036 ",No,"$248,046 ",Yes,M,Masters,Lawyer,27,Commercial,"$29,802 ",8,Van,No,"$22,795 ",2,No,1,"$4,931 ",0,Highly Rural/ Rural
+97,2,18-Jan-70,51,3,11,"$73,918 ",No,"$249,472 ",No,M,High School,Home Maker,32,Private,"$24,605 ",3,Minivan,Yes,"$20,349 ",3,No,7,$0 ,1,Highly Urban/ Urban
+98,1,30-Nov-70,50,2,12,"$43,024 ",No,"$264,301 ",No,F,High School,Student,26,Commercial,"$33,706 ",9,SUV,Yes,"$13,900 ",0,No,1,"$7,543 ",12,Highly Rural/ Rural
+99,1,19-Feb-02,18,3,0,"$84,402 ",Yes,"$120,289 ",No,F,High School,Blue Collar,19,Commercial,"$16,146 ",9,Panel Truck,Yes,"$9,485 ",0,No,5,$0 ,4,Highly Rural/ Rural
