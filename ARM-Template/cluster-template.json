@@ -44,7 +44,7 @@
       "name": "default",
       "addressPrefix": "10.0.0.0/24"
     },
-    "hiveName": "[concat('hive_',uniqueString(resourceGroup().name))]"
+    "hiveName": "[concat('hive_',uniqueString(resourceGroup().id))]"
   },
   "resources": [
     {
