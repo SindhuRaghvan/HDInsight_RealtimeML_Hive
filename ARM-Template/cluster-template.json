@@ -26,6 +26,10 @@
      "ADLSGen2StorageName": {
          "type": "string"
          },
+         "utcValue": {
+            "type": "string",
+            "defaultValue": "[utcNow()]"
+        },
       
       "managedIdentityName": {
           "type": "string"
@@ -39,7 +43,8 @@
       "subnetConfig": {
         "name": "default",
         "addressPrefix": "10.0.0.0/24"
-      }
+      },
+      "hiveName": "[concat('hive_',uniqueString(resourceGroup()))]"
     },
     "resources": [
         {
@@ -95,7 +100,7 @@
               {
                 "name":"[concat(parameters('ADLSGen2StorageName'), '.dfs.core.windows.net')]",
                 "isDefault": true,
-                "fileSystem": "[concat(parameters('sparkClusterName'), '9-9-202001407')]",
+                "fileSystem": "[concat(parameters('sparkClusterName'), '30-10-202001143')]",
                 "resourceID": "[concat(resourceGroup().id, '/providers/Microsoft.Storage/storageAccounts/', parameters('ADLSGen2StorageName'))]",
                 "msiResourceId": "[concat(resourceGroup().id, '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('managedIdentityName'))]"
               }
@@ -177,7 +182,7 @@
               {
                 "name": "[concat(parameters('ADLSGen2StorageName'), '.dfs.core.windows.net')]",
                 "isDefault": true,
-                "fileSystem": "[concat(parameters('kafkaClusterName'), '9-9-202001407')]",
+                "fileSystem": "[concat(parameters('kafkaClusterName'), parameters('utcValue'))]",
                 "resourceID": "[concat(resourceGroup().id, '/providers/Microsoft.Storage/storageAccounts/', parameters('ADLSGen2StorageName'))]",
                 "msiResourceId": "[concat(resourceGroup().id, '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('managedIdentityName'))]"
               }
@@ -244,6 +249,7 @@
             ]
           }
         },
+        
            "identity":{  
                "type":"UserAssigned",
               "userAssignedIdentities": {
@@ -251,7 +257,88 @@
                 }
               }
       }
+      },
+      {
+      "type": "Microsoft.HDInsight/clusters",
+      "apiVersion": "2018-06-01-preview",
+      "name": "[variables('hiveName')]",
+      "location": "[resourceGroup().location]",
+      "dependsOn": [
+          "[concat('Microsoft.Network/virtualNetworks/',variables('networkConfig').name)]"
+       ],
+      "properties": {
+        "clusterVersion": "4.0",
+        "osType": "Linux",
+        "tier": "Standard",
+        "clusterDefinition": {
+          "kind": "interactivehive",
+          "configurations": {
+            "gateway": {
+              "restAuthCredential.isEnabled": true,
+              "restAuthCredential.username": "[parameters('clusterLoginUserName')]",
+              "restAuthCredential.password": "[parameters('clusterLoginPassword')]"
+            }
+          }
+        },
+         "storageProfile": {
+            "storageaccounts": [
+              {
+                "name": "[concat(parameters('ADLSGen2StorageName'), '.dfs.core.windows.net')]",
+                "isDefault": true,
+                "fileSystem": "[concat(variables('hiveName'), '30-10-202001141')]",
+                "resourceID": "[concat(resourceGroup().id, '/providers/Microsoft.Storage/storageAccounts/', parameters('ADLSGen2StorageName'))]",
+                "msiResourceId": "[concat(resourceGroup().id, '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('managedIdentityName'))]"
+              }
+            ]
+          },
+        "computeProfile": {
+          "roles": [
+            {
+              "name": "headnode",
+              "minInstanceCount": 1,
+              "targetInstanceCount": 2,
+              "hardwareProfile": {
+                "vmSize": "Standard_D13_V2"
+              },
+              "osProfile": {
+                "linuxOperatingSystemProfile": {
+                  "username": "[parameters('sshUserName')]",
+                  "password": "[parameters('sshPassword')]"
+                }
+              }
+            },
+            {
+              "name": "workernode",
+              "minInstanceCount": 1,
+              "targetInstanceCount": 2,
+              "hardwareProfile": {
+                "vmSize": "Standard_D14_v2"
+              },
+              "osProfile": {
+                "linuxOperatingSystemProfile": {
+                  "username": "[parameters('sshUserName')]",
+                  "password": "[parameters('sshPassword')]"
+                }
+              }
+            },
+            {
+              "name": "zookeepernode",
+              "minInstanceCount": 1,
+              "targetInstanceCount": 3,
+              "hardwareProfile": {
+                "vmSize": "Large"
+              },
+              "osProfile": {
+                "linuxOperatingSystemProfile": {
+                  "username": "[parameters('sshUserName')]",
+                  "password": "[parameters('sshPassword')]"
+                }
+              }
+            }
+          ]
+        }
       }
+    }
       
     ],
     "outputs": {
