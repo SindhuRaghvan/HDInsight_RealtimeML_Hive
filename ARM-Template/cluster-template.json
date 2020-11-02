@@ -319,8 +319,13 @@
                   "username": "[parameters('sshUserName')]",
                   "password": "[parameters('sshPassword')]"
                 }
+              },
+              "virtualNetworkProfile": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('networkConfig').name)]",
+                "subnet": "[concat(resourceId('Microsoft.Network/virtualNetworks', variables('networkConfig').name), '/subnets/', variables('subnetConfig').name)]"
               }
             },
+            
             {
               "name": "zookeepernode",
               "minInstanceCount": 1,
@@ -333,9 +338,20 @@
                   "username": "[parameters('sshUserName')]",
                   "password": "[parameters('sshPassword')]"
                 }
+              },
+                "virtualNetworkProfile": {
+                "id": "[resourceId('Microsoft.Network/virtualNetworks', variables('networkConfig').name)]",
+                "subnet": "[concat(resourceId('Microsoft.Network/virtualNetworks', variables('networkConfig').name), '/subnets/', variables('subnetConfig').name)]"
               }
             }
           ]
+        }
+      },
+        "identity": {
+        "type": "UserAssigned",
+        "userAssignedIdentities": {
+          "[concat(resourceGroup().id, '/providers/Microsoft.ManagedIdentity/userAssignedIdentities/', parameters('managedIdentityName'))]": {
+          }
         }
       }
     }
